@@ -1,15 +1,21 @@
 // Import Packages
-const express = require("express");
+const express = require('express');
 
 // Create express app
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
+// Middlewares
+app.use(express.static('public'));
+
+// Template Engine
+app.set("view engine","ejs");
+
+app.get('/', (req, res) => {
+  res.send('Hello World');
 });
 
 // Decleare Port
 const PORT = 15000;
-app.listen(PORT, ()=>{
-  console.log(`Server listened in ${PORT}`)
+app.listen(PORT, () => {
+  console.log(`Server listened in ${PORT}`);
 });
