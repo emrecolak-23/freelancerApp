@@ -8,3 +8,25 @@ exports.getHomePage = (req, res) => {
     });
   }
 };
+
+exports.getAboutPage = (req, res) => {
+  try {
+    res.status(200).render('about');
+  } catch (error) {
+    res.status(400).json({
+      status: 'About Page not loaded',
+      error,
+    });
+  }
+};
+
+exports.getContactPage = (req, res) => {
+  try {
+    res.status(200).render('contact');
+  } catch(error) {
+    res.status(400).json({
+      status: 'Contact Page not loaded',
+      error
+    })
+  }
+}
