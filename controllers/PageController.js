@@ -23,10 +23,21 @@ exports.getAboutPage = (req, res) => {
 exports.getContactPage = (req, res) => {
   try {
     res.status(200).render('contact');
-  } catch(error) {
+  } catch (error) {
     res.status(400).json({
       status: 'Contact Page not loaded',
-      error
-    })
+      error,
+    });
   }
-}
+};
+
+exports.getAddPage = (req, res) => {
+  try {
+    res.status(200).render('add');
+  } catch (error) {
+    res.status(400).json({
+      status: 'Add Page not loaded',
+      error,
+    });
+  }
+};
