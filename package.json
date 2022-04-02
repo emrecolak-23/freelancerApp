@@ -20,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/emrecolak-23/freelancerApp/issues"
   },
-  "homepage": "https://github.com/emrecolak-23/freelancerApp#readme"
+  "homepage": "https://github.com/emrecolak-23/freelancerApp#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
