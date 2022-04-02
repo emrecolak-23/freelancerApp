@@ -1,4 +1,4 @@
-exports.getHomePage = (req, res) => {
+exports.getHomePage = async (req, res) => {
   try {
     res.status(200).render('index');
   } catch (error) {

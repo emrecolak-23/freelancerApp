@@ -6,6 +6,7 @@ const cors = require('cors');
 // Import Routers
 const PageRouter = require('./routes/PageRoutes');
 const ProjectRouter = require('./routes/ProjectRoutes');
+const CategoryRouter = require('./routes/CategoryRoutes');
 
 // Create express app
 const app = express();
@@ -23,6 +24,7 @@ app.set('view engine', 'ejs');
 // Routes
 app.use('/', PageRouter);
 app.use('/project', ProjectRouter);
+app.use('/category', CategoryRouter);
 
 // Connect DB
 const dbURI =
