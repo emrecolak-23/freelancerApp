@@ -1,3 +1,6 @@
+// Import Models
+const Category = require('../models/Category');
+
 exports.getHomePage = async (req, res) => {
   try {
     res.status(200).render('index');
@@ -31,9 +34,12 @@ exports.getContactPage = (req, res) => {
   }
 };
 
-exports.getAddPage = (req, res) => {
+exports.getAddPage = async (req, res) => {
   try {
-    res.status(200).render('add');
+    const categories = await Category.find({});
+    res.status(200).render('add', {
+      categories
+    });
   } catch (error) {
     res.status(400).json({
       status: 'Add Page not loaded',
