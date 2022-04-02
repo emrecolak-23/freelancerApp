@@ -10,29 +10,29 @@ const ProjectSchema = new Schema({
   name: {
     type: String,
     unique: true,
-    required: true,
+    required: true
   },
   description: {
     type: String,
-    required: true,
+    required: true
   },
   image: {
-    type: String,
+    type: String
   },
   category: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Category',
+    ref: "Category"
   },
   link: {
-    type: String,
+    type: String
   },
   slug: {
     type: String,
-    unique: true,
+    unique: true
   },
   createdAt: {
     type: Date,
-    default: Date.now,
+    default: Date.now
   },
 });
 

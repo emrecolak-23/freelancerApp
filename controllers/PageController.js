@@ -1,9 +1,12 @@
 // Import Models
 const Category = require('../models/Category');
-
+const Project = require('../models/Project');
 exports.getHomePage = async (req, res) => {
   try {
-    res.status(200).render('index');
+    const projects = await Project.find().sort('-createdAt').populate('category')
+    res.status(200).render('index', {
+      projects
+    });
   } catch (error) {
     res.status(400).json({
       status: 'Home Page not loaded',
@@ -36,7 +39,7 @@ exports.getContactPage = (req, res) => {
 
 exports.getAddPage = async (req, res) => {
   try {
-    const categories = await Category.find({});
+    const categories = await Category.find();
     res.status(200).render('add', {
       categories
     });

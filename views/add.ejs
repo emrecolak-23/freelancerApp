@@ -43,7 +43,7 @@
                   <select name="category" class="form-control">
                     <option value="" disabled selected>Select category</option>    
                     <% for( let i = 0; i<categories.length; i++ ) {  %> 
-                    <option value="<% categories[i]._id  %>"><%= categories[i].name %></option>
+                    <option value="<%= categories[i]._id  %>"><%= categories[i].name %></option>
                     <% } %> 
                     </select>
                 </div>
@@ -78,7 +78,7 @@
                   type="submit"
                   class="btn btn-primary rounded-0 d-block ml-auto mr-0 tm-btn-animate tm-btn-submit tm-icon-submit"
                 >
-                  <span>Submit</span>
+                  <span>Add</span>
                 </button>
               </div>
             </form>
