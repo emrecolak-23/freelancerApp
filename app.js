@@ -1,6 +1,9 @@
 // Import Packages
 const express = require('express');
 
+// Import Routers
+const PageRouter = require('./routes/PageRoutes');
+
 // Create express app
 const app = express();
 
@@ -8,11 +11,10 @@ const app = express();
 app.use(express.static('public'));
 
 // Template Engine
-app.set("view engine","ejs");
+app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
-  res.send('Hello World');
-});
+// Routes
+app.use('/', PageRouter);
 
 // Decleare Port
 const PORT = 15000;
