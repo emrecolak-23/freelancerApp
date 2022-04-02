@@ -1,21 +1,28 @@
 // Import Packages
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 // Import Routers
 const PageRouter = require('./routes/PageRoutes');
+const ProjectRouter = require('./routes/ProjectRoutes');
 
 // Create express app
 const app = express();
 
 // Middlewares
 app.use(express.static('public'));
+app.use(express.static('uploads'))
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cors());
 
 // Template Engine
 app.set('view engine', 'ejs');
 
 // Routes
 app.use('/', PageRouter);
+app.use('/project', ProjectRouter);
 
 // Connect DB
 const dbURI =
