@@ -1,0 +1,24 @@
+{
+  "name": "freelancerapp",
+  "version": "1.0.0",
+  "description": "freelancer project app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emrecolak-23/freelancerApp.git"
+  },
+  "keywords": [
+    "freelancer",
+    "work",
+    "project"
+  ],
+  "author": "Emre ÇOLAK",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emrecolak-23/freelancerApp/issues"
+  },
+  "homepage": "https://github.com/emrecolak-23/freelancerApp#readme"
+}
