@@ -3,9 +3,21 @@ const Category = require('../models/Category');
 const Project = require('../models/Project');
 exports.getHomePage = async (req, res) => {
   try {
-    const projects = await Project.find().sort('-createdAt').populate('category')
+
+    const page = req.query.page || 1;
+    const projectPerPage = 3;
+    const totalProject = await Project.find().countDocuments();
+
+    const projects = await Project.find()
+    .sort('-createdAt')
+    .skip((page-1)*projectPerPage)
+    .limit(projectPerPage)
+    .populate('category')
+
     res.status(200).render('index', {
-      projects
+      projects,
+      current: page,
+      pages: Math.ceil(totalProject/projectPerPage)
     });
   } catch (error) {
     res.status(400).json({
