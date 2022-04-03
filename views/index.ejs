@@ -52,7 +52,7 @@
                                                     <div class="divider-custom-line"></div>
                                                     <div class="divider-custom-icon">
                                                         <a href="/project/edit/<%= projects[i].slug %>" class="btn btn-sm btn-success">UPDATE</a>
-                                                        <a class="btn btn-sm btn-danger">DELETE</a>
+                                                        <a onclick="return confirm('Are you sure delete this project?')" href="/project/<%= projects[i]._id %>?_method=DELETE" class="btn btn-sm btn-danger">DELETE</a>
                                                     </div>
                                                     <div class="divider-custom-line"></button></div>
                                                 </div>

@@ -27,5 +27,7 @@ router.route('/').post(upload, ProjectController.createProject);
 
 router.route('/:id').put(ProjectController.updateProject);
 
+router.route('/:id').delete(ProjectController.deleteProject);
+
 module.exports = router
 

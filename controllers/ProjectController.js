@@ -1,3 +1,5 @@
+// Import Packages
+const fs = require('fs');
 // Import Models
 const Project = require('../models/Project');
 
@@ -35,5 +37,21 @@ exports.updateProject = async (req, res) => {
     res.status(201).redirect('/');
   } catch (error) {
     res.status(400).redirect('/');
+  }
+};
+
+exports.deleteProject = async (req, res) => {
+  try {
+    const project = await Project.findOne({ _id: req.params.id });
+    let deletedImage = __dirname + '/../uploads/' + project.image;
+    fs.unlinkSync(deletedImage);
+
+    await Project.findByIdAndDelete({ _id: req.params.id });
+    res.status(200).redirect('/');
+  } catch (error) {
+    res.status(400).json({
+      status: 'Project not successfully deleted',
+      error,
+    });
   }
 };
