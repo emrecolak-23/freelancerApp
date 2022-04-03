@@ -14,6 +14,18 @@
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
+                <% if (flashMessages) { %>
+                    <% if (flashMessages.success) { %>
+                        <div class="alert alert-success text-center" role="alert">
+                            <%= flashMessages.success  %> 
+                        </div>
+                    <% } %>
+                    <% if (flashMessages.error) { %>
+                        <div class="alert alert-danger text-center" role="alert">
+                            <%= flashMessages.error  %> 
+                          </div>
+                    <% } %> 
+              <% } %>   
                 <!-- Portfolio Grid Items-->
                 <div class="row justify-content-center">
                     <!-- Portfolio Item 1-->

@@ -12,12 +12,11 @@ exports.createProject = async (req, res) => {
       category: req.body.category,
       link: req.body.link,
     });
+    req.flash('success', `${project.name} has been successfully created`);
     res.status(201).redirect('/');
   } catch (error) {
-    res.status(400).json({
-      status: 'Something went wrong When project created',
-      error,
-    });
+    req.flash('error', 'Something went wrong');
+    res.status(400).redirect('/');
   }
 };
 
@@ -34,8 +33,10 @@ exports.updateProject = async (req, res) => {
       }
     );
     project.save();
+    req.flash('success', `${project.name} has been updated successfully`);
     res.status(201).redirect('/');
   } catch (error) {
+    req.flash('error', 'Something went wrong!');
     res.status(400).redirect('/');
   }
 };
@@ -47,11 +48,10 @@ exports.deleteProject = async (req, res) => {
     fs.unlinkSync(deletedImage);
 
     await Project.findByIdAndDelete({ _id: req.params.id });
+    req.flash('success', `${project.name} has been deleted successfully`);
     res.status(200).redirect('/');
   } catch (error) {
-    res.status(400).json({
-      status: 'Project not successfully deleted',
-      error,
-    });
+    req.flash('error', 'Something went wrong!');
+    res.status(400).redirect('/');
   }
 };
