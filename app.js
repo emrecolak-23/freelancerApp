@@ -2,6 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const methodOverride = require('method-override');
 
 // Import Routers
 const PageRouter = require('./routes/PageRoutes');
@@ -17,7 +18,9 @@ app.use(express.static('uploads'))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
-
+app.use(methodOverride('_method',{
+  methods: ['GET','POST']
+}));
 // Template Engine
 app.set('view engine', 'ejs');
 

@@ -50,3 +50,17 @@ exports.getAddPage = async (req, res) => {
     });
   }
 };
+
+exports.getEditPage = async (req, res) => {
+  try {
+    const project = await Project.findOne({slug:req.params.slug});
+    res.status(200).render('edit', {
+      project
+    });
+  } catch(error) {
+    res.status(400).json({
+      status: 'Edit Page not loaded',
+      error
+    })
+  }
+};

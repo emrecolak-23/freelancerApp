@@ -1,0 +1,79 @@
+<%- include("partials/_header") %>
+<!-- Navigation-->
+<%- include("partials/_navigation") %>
+<!-- Masthead-->
+<%- include("partials/_slider") %>
+
+<main>
+  <div class="container-fluid px-0">
+    <div class="mx-auto tm-content-container">
+      <div class="row mt-3 pb-3">
+        <div class="col-12">
+          <div class="mx-auto tm-about-text-container px-3">
+            <h2 class="tm-page-title mb-4 tm-text-primary text-center">
+              Edit This Project
+            </h2>
+            <p class="mb-4 text-center">
+              You can change project name, link and description
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="mx-auto pb-3 tm-about-text-container px-3">
+        <div class="row">
+          <div class="offset-1 col-lg-10 mb-5">
+            <form
+              method="post"
+              action="/project/<%= project._id %>?_method=PUT"
+              class="tm-contact-form"
+            >
+              <div class="form-group mb-3">
+                <input
+                  type="text"
+                  name="name"
+                  class="form-control rounded-0"
+                  placeholder="Project Name"
+                  required
+                  value="<%= project.name  %>"
+                />
+              </div>
+              <div class="form-group mb-3">
+                <input
+                  type="text"
+                  name="link"
+                  class="form-control rounded-0"
+                  placeholder="Project Link"
+                  value="<%= project.link  %>"
+                  required
+                />
+              </div>
+              <div class="form-group"></div>
+              <div class="form-group mb-3">
+                <textarea
+                  rows="8"
+                  name="description"
+                  class="form-control rounded-0"
+                  placeholder="Project Description"
+                  required
+                ><%= project.description %></textarea>
+              </div>
+              <div class="form-group mb-0">
+                <button
+                  type="submit"
+                  class="btn btn-primary rounded-0 d-block ml-auto mr-0 tm-btn-animate tm-btn-submit tm-icon-submit"
+                >
+                  <span>Edit</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+
+<!-- Footer -->
+<%- include("partials/_footer")  %> 

@@ -8,7 +8,7 @@ exports.createProject = async (req, res) => {
       description: req.body.description,
       image: req.file.filename,
       category: req.body.category,
-      link: req.body.link
+      link: req.body.link,
     });
     res.status(201).redirect('/');
   } catch (error) {
@@ -16,5 +16,24 @@ exports.createProject = async (req, res) => {
       status: 'Something went wrong When project created',
       error,
     });
+  }
+};
+
+exports.updateProject = async (req, res) => {
+  try {
+    const project = await Project.findByIdAndUpdate(
+      {
+        _id: req.params.id,
+      },
+      {
+        name: req.body.name,
+        description: req.body.description,
+        link: req.body.link,
+      }
+    );
+    project.save();
+    res.status(201).redirect('/');
+  } catch (error) {
+    res.status(400).redirect('/');
   }
 };

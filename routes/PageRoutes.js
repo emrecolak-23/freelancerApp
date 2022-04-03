@@ -18,4 +18,7 @@ router.route('/contact').get(PageController.getContactPage);
 // add Page
 router.route('/add').get(PageController.getAddPage);
 
+// edit page
+router.route('/project/edit/:slug').get(PageController.getEditPage);
+
 module.exports = router;
