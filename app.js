@@ -3,7 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const methodOverride = require('method-override');
-
+const session = require('express-session');
+const flash = require('connect-flash');
 // Import Routers
 const PageRouter = require('./routes/PageRoutes');
 const ProjectRouter = require('./routes/ProjectRoutes');
@@ -21,6 +22,15 @@ app.use(cors());
 app.use(methodOverride('_method',{
   methods: ['GET','POST']
 }));
+app.use(session({ cookie: { maxAge: 60000 }, 
+  secret: 'woot',
+  resave: false, 
+  saveUninitialized: false}));
+app.use(flash());
+app.use((req, res, next)=> {
+  res.locals.flashMessages = req.flash();
+  next();
+});
 // Template Engine
 app.set('view engine', 'ejs');
 
