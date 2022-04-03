@@ -13,7 +13,8 @@ router.route('/').get(PageController.getHomePage);
 router.route('/about').get(PageController.getAboutPage);
 
 // contact page
-router.route('/contact').get(PageController.getContactPage);
+router.route('/contact').get(PageController.getContactPage)
+                        .post(PageController.sendEmail)
 
 // add Page
 router.route('/add').get(PageController.getAddPage);
